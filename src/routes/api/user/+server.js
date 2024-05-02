@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+
 export async function POST({ request, cookies }) {
 	const body = await request.json();
 	const prisma = new PrismaClient();
@@ -25,4 +26,4 @@ export async function DELETE({ request, cookies }) {
 	const body = await request.json();
 	const prisma = new PrismaClient();
 	const res = await prisma.user.delete({ where: { email: body.email } });
-	return new Response('Deleted', { status: 200 });
+	return new Response('Deleted', { status: 200 });}

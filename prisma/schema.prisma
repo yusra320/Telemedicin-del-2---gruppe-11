@@ -19,4 +19,15 @@ model User {
   email     String @unique
   name      String?
   hashPass  String?
+   Dairy    Dairy[]
+}
+
+model Dairy {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
 }
